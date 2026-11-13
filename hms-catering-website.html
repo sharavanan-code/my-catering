@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="HMS Catering - Authentic firewood dum biryani and catering services in Chennai." />
+  <title>HMS Catering | Authentic Firewood Dum Biryani</title>
+  <style>
+    :root {
+      --maroon: #741d25;
+      --maroon-dark: #481116;
+      --gold: #d5a64c;
+      --cream: #fffaf0;
+      --ink: #2d211d;
+      --muted: #766b64;
+      --white: #fff;
+      --shadow: 0 18px 45px rgba(58, 25, 18, .12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    .topbar {
+      background: var(--maroon-dark); color: #f8e8c5; text-align: center;
+      padding: 8px 16px; font: 13px Arial, sans-serif; letter-spacing: .3px;
+    }
+    header {
+      position: sticky; top: 0; z-index: 20; background: rgba(255,250,240,.96);
+      backdrop-filter: blur(12px); border-bottom: 1px solid #eadfc9;
+    }
+    .nav {
+      max-width: 1160px; margin: auto; padding: 14px 22px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; }
+    .brand-mark {
+      width: 48px; height: 48px; border: 2px solid var(--gold); border-radius: 50%;
+      display: grid; place-items: center; color: var(--maroon); font-weight: bold; font-size: 19px;
+    }
+    .brand-name { color: var(--maroon); font-size: 23px; font-weight: bold; line-height: 1; }
+    .brand-sub { display: block; color: var(--muted); font: 10px Arial, sans-serif; letter-spacing: 2px; margin-top: 5px; }
+    .nav-links { display: flex; gap: 27px; align-items: center; font: 14px Arial, sans-serif; }
+    .nav-links a:hover { color: var(--maroon); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 0; border-radius: 999px; padding: 12px 21px; font: bold 14px Arial, sans-serif;
+      transition: .2s ease;
+    }
+    .btn-gold { background: var(--gold); color: #321b12; }
+    .btn-gold:hover { background: #e4bb69; transform: translateY(-2px); }
+    .btn-maroon { background: var(--maroon); color: white; }
+    .btn-maroon:hover { background: var(--maroon-dark); transform: translateY(-2px); }
+    .menu-toggle { display: none; border: 1px solid #e6d8bf; background: white; padding: 8px 12px; border-radius: 8px; }
+    .hero {
+      min-height: 610px; display: flex; align-items: center; color: white; position: relative;
+      background: linear-gradient(90deg, rgba(35,15,10,.88), rgba(35,15,10,.48), rgba(35,15,10,.18)),
+      url("https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=2000&q=85") center/cover;
+    }
+    .hero-inner { width: min(1160px, 100%); margin: auto; padding: 85px 22px; }
+    .eyebrow { color: #f1cc7e; text-transform: uppercase; letter-spacing: 3px; font: bold 12px Arial, sans-serif; }
+    h1 { font-size: clamp(44px, 7vw, 76px); line-height: 1.04; max-width: 690px; margin: 18px 0; }
+    h1 span { color: #f0c66e; }
+    .hero p { max-width: 520px; color: #f7eee2; font-size: 18px; margin-bottom: 28px; }
+    .hero-actions { display: flex; gap: 13px; flex-wrap: wrap; }
+    .btn-outline { border: 1px solid rgba(255,255,255,.7); color: white; background: transparent; }
+    .btn-outline:hover { background: white; color: var(--maroon); }
+    .trust-row { display: flex; gap: 25px; flex-wrap: wrap; margin-top: 42px; color: #f4e4c5; font: 12px Arial, sans-serif; }
+    .trust-row span::before { content: "✦"; color: var(--gold); margin-right: 8px; }
+    section { padding: 82px 22px; }
+    .container { max-width: 1160px; margin: auto; }
+    .section-head { text-align: center; max-width: 650px; margin: 0 auto 42px; }
+    .kicker { color: var(--maroon); font: bold 12px Arial, sans-serif; letter-spacing: 2.5px; text-transform: uppercase; }
+    h2 { color: var(--maroon-dark); font-size: clamp(32px, 4vw, 44px); line-height: 1.15; margin: 10px 0 13px; }
+    .section-head p { color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: center; }
+    .about-photo {
+      min-height: 410px; border-radius: 18px; box-shadow: var(--shadow);
+      background: url("https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1200&q=85") center/cover;
+      position: relative;
+    }
+    .photo-note { position: absolute; bottom: 20px; left: 20px; background: var(--cream); padding: 15px 20px; border-left: 4px solid var(--gold); }
+    .photo-note strong { color: var(--maroon); display: block; font-size: 19px; }
+    .about-copy p { color: var(--muted); margin: 14px 0 22px; }
+    .feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 25px 0; }
+    .feature { background: #f5eddf; border-radius: 10px; padding: 13px; font-size: 14px; }
+    .feature b { color: var(--maroon); }
+    .menu-section { background: #f5eddf; }
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .food-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 25px rgba(50,25,10,.07); }
+    .food-card img { width: 100%; height: 205px; object-fit: cover; display: block; }
+    .food-info { padding: 19px; }
+    .food-info h3 { color: var(--maroon); font-size: 21px; }
+    .food-info p { color: var(--muted); font: 13px Arial, sans-serif; margin: 5px 0 12px; }
+    .price { color: var(--maroon-dark); font-weight: bold; }
+    .price small { color: var(--muted); font: 12px Arial, sans-serif; }
+    .menu-note { text-align: center; color: var(--muted); font: 12px Arial, sans-serif; margin-top: 24px; }
+    .service-wrap { max-width: 850px; margin: auto; }
+    .service-item { border: 1px solid #eadfc9; background: white; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+    .service-question {
+      width: 100%; border: 0; background: white; color: var(--maroon-dark); padding: 19px 21px;
+      display: flex; align-items: center; justify-content: space-between; text-align: left; font-weight: bold; font-size: 18px;
+    }
+    .service-question span:last-child { color: var(--gold); font: 24px Arial, sans-serif; }
+    .service-answer { display: none; padding: 0 21px 20px; color: var(--muted); }
+    .service-item.active .service-answer { display: block; }
+    .service-item.active .service-question span:last-child { transform: rotate(45deg); }
+    .service-answer .btn { margin-top: 13px; padding: 9px 16px; font-size: 12px; }
+    .bulk-banner {
+      background: linear-gradient(110deg, var(--maroon-dark), var(--maroon));
+      color: white; border-radius: 20px; padding: 43px; display: flex; justify-content: space-between; align-items: center; gap: 25px;
+    }
+    .bulk-banner h2 { color: white; margin-top: 0; }
+    .bulk-banner p { color: #ead9d2; }
+    .contact-section { background: #f5eddf; }
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 30px; }
+    .contact-card, .contact-form { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 8px 25px rgba(50,25,10,.06); }
+    .contact-line { padding: 14px 0; border-bottom: 1px solid #eee5d8; }
+    .contact-line b { display: block; color: var(--maroon); margin-bottom: 3px; }
+    .contact-line span { color: var(--muted); font: 14px Arial, sans-serif; }
+    .contact-form label { display: block; font: bold 13px Arial, sans-serif; margin: 12px 0 6px; color: var(--maroon-dark); }
+    .contact-form input, .contact-form select, .contact-form textarea {
+      width: 100%; border: 1px solid #e6d9c8; border-radius: 8px; padding: 12px;
+      font: 14px Arial, sans-serif; background: #fffdf9; outline-color: var(--gold);
+    }
+    .contact-form textarea { min-height: 100px; resize: vertical; }
+    .contact-form .btn { margin-top: 17px; width: 100%; }
+    footer { background: #321014; color: #e9d9ce; padding: 30px 22px; text-align: center; font: 13px Arial, sans-serif; }
+    footer strong { color: #f0c66e; }
+    .whatsapp-float {
+      position: fixed; right: 20px; bottom: 20px; z-index: 30; width: 58px; height: 58px;
+      border-radius: 50%; display: grid; place-items: center; color: white; background: #20b95a;
+      box-shadow: 0 8px 25px rgba(0,0,0,.22); font: bold 25px Arial, sans-serif;
+    }
+    .whatsapp-float:hover { transform: translateY(-3px); }
+    @media (max-width: 760px) {
+      .nav-links {
+        display: none; position: absolute; top: 76px; left: 0; right: 0; background: var(--cream);
+        padding: 20px 24px; flex-direction: column; align-items: stretch; border-bottom: 1px solid #eadfc9;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links .btn { width: 100%; }
+      .menu-toggle { display: block; }
+      .nav > .btn { display: none; }
+      .hero { min-height: 570px; background-position: 58% center; }
+      .hero-inner { padding-top: 65px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+      .about-photo { min-height: 300px; }
+      .menu-grid { grid-template-columns: 1fr 1fr; gap: 13px; }
+      .food-card img { height: 145px; }
+      .food-info { padding: 13px; }
+      .food-info h3 { font-size: 17px; }
+      .bulk-banner { padding: 28px; flex-direction: column; align-items: flex-start; }
+      section { padding: 62px 18px; }
+    }
+    @media (max-width: 430px) {
+      .menu-grid { grid-template-columns: 1fr; }
+      .food-card img { height: 210px; }
+      .feature-list { grid-template-columns: 1fr; }
+      .trust-row { gap: 12px; }
+      .contact-card, .contact-form { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">Authentic Firewood Dum Biryani · Chennai · Catering & Bulk Orders</div>
+
+  <header>
+    <nav class="nav">
+      <a class="brand" href="#home" aria-label="HMS Catering home">
+        <span class="brand-mark">HMS</span>
+        <span><span class="brand-name">HMS Catering</span><span class="brand-sub">DUM COOKED · TRADITIONALLY YOURS</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#menu">Our Menu</a><a href="#services">Catering Services</a><a href="#contact">Contact</a>
+        <a class="btn btn-gold" href="#contact">Get a Quote</a>
+      </div>
+      <a class="btn btn-maroon" href="https://wa.me/919543613177?text=Hello%20HMS%20Catering%2C%20I%20would%20like%20to%20enquire%20about%20your%20catering%20services." target="_blank" rel="noopener">WhatsApp Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="eyebrow">A taste that brings people together</div>
+        <h1>Tradition served<br><span>one biryani</span> at a time.</h1>
+        <p>Celebrate every occasion with the rich aroma and authentic taste of traditionally dum-cooked biryani from HMS Catering.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#menu">Explore Our Menu</a>
+          <a class="btn btn-outline" href="https://wa.me/919543613177?text=Hello%20HMS%20Catering%2C%20please%20share%20your%20menu%20and%20catering%20details." target="_blank" rel="noopener">Enquire on WhatsApp</a>
+        </div>
+        <div class="trust-row"><span>Authentic dum biryani</span><span>Events & celebrations</span><span>Bulk orders</span></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-photo">
+          <div class="photo-note"><strong>HMS Catering</strong><span>Quality · Taste · Trust</span></div>
+        </div>
+        <div class="about-copy">
+          <div class="kicker">Welcome to HMS Catering</div>
+          <h2>Good food makes every gathering special.</h2>
+          <p>From family celebrations to special events, HMS Catering brings people together with flavourful biryani and much-loved favourites. Our speciality is authentic firewood dum biryani, prepared in the traditional style.</p>
+          <div class="feature-list">
+            <div class="feature">✦ <b>Traditional taste</b><br>Authentic dum-cooked flavour</div>
+            <div class="feature">✦ <b>For every occasion</b><br>Events and family functions</div>
+            <div class="feature">✦ <b>Menu choices</b><br>Chicken and mutton biryani</div>
+            <div class="feature">✦ <b>Easy enquiries</b><br>Connect directly on WhatsApp</div>
+          </div>
+          <a class="btn btn-maroon" href="#services">View Catering Services</a>
+        </div>
+      </div>
+    </section>
+
+    
+<section class="menu-section" id="menu">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="kicker">Made for sharing</div>
+      <h2>Our Popular Menu</h2>
+      <p>
+        A selection of favourites from HMS Catering.
+        Contact us for event quantities and customised quotations.
+      </p>
+    </div>
+
+    <div class="menu-grid">
+
+      <!-- Chicken Biryani -->
+      <article class="food-card">
+        <img
+          src="./images/chicken-biryani.jpg"
+          alt="Chicken Dum Biryani"
+          loading="lazy"
+        />
+        <div class="food-info">
+          <h3>Chicken Biryani</h3>
+          <p>Traditional firewood dum biryani.</p>
+          <div class="price">
+            ₹300 <small>/ per plate · flyer price</small>
+          </div>
+        </div>
+      </article>
+
+      <!-- Mutton Biryani -->
+      <article class="food-card">
+        <img
+          src="./images/mutton-biryani.jpg"
+          alt="Mutton Biryani"
+          loading="lazy"
+        />
+        <div class="food-info">
+          <h3>Mutton Biryani</h3>
+          <p>Rich, aromatic biryani for a special meal.</p>
+          <div class="price">
+            ₹450 <small>/ per plate · flyer price</small>
+          </div>
+        </div>
+      </article>
+
+      <!-- Chicken 65 -->
+      <article class="food-card">
+        <img
+          src="./images/chicken-65.jpg"
+          alt="Chicken 65"
+          loading="lazy"
+        />
+        <div class="food-info">
+          <h3>Chicken 65</h3>
+          <p>A popular spicy chicken starter.</p>
+          <div class="price">Ask for price</div>
+        </div>
+      </article>
+
+      <!-- Ice Cream -->
+      <article class="food-card">
+        <img
+          src="./images/ice-cream.jpg"
+          alt="Ice Cream"
+          loading="lazy"
+        />
+        <div class="food-info">
+          <h3>Ice Cream</h3>
+          <p>A cool finish to your celebration.</p>
+          <div class="price">Ask for price</div>
+        </div>
+      </article>
+
+      <!-- Bread Halwa -->
+      <article class="food-card">
+        <img
+          src="./images/bread-halwa.jpg"
+          alt="Bread Halwa"
+          loading="lazy"
+        />
+        <div class="food-info">
+          <h3>Bread Halwa</h3>
+          <p>A traditional sweet treat.</p>
+          <div class="price">Ask for price</div>
+        </div>
+      </article>
+
+      <!-- Gravy and Raita -->
+      <article class="food-card">
+        <img
+          src="./images/gravy-raita.jpg"
+          alt="Gravy and Raita"
+          loading="lazy"
+        />
+        <div class="food-info">
+          <h3>Gravy &amp; Raita</h3>
+          <p>Classic accompaniments for biryani.</p>
+          <div class="price">Ask for price</div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="menu-note">
+      Prices are based on the supplied HMS Catering menu.
+      Please confirm current rates before ordering.
+    </p>
+
+  </div>
+</section>
+
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Make your occasion memorable</div>
+          <h2>Our Catering Services</h2>
+          <p>Choose a service below to see details and send an enquiry directly to our WhatsApp.</p>
+        </div>
+        <div class="service-wrap">
+          <div class="service-item active">
+            <button class="service-question" aria-expanded="true"><span>Wedding & Reception Catering</span><span>+</span></button>
+            <div class="service-answer">Make your big day memorable with biryani and catering options for your guests.<br><a class="btn btn-maroon service-wa" data-service="Wedding & Reception Catering" href="#">Enquire on WhatsApp</a></div>
+          </div>
+          <div class="service-item">
+            <button class="service-question" aria-expanded="false"><span>Birthday & Family Functions</span><span>+</span></button>
+            <div class="service-answer">Food for birthdays, anniversaries, family get-togethers and other celebrations.<br><a class="btn btn-maroon service-wa" data-service="Birthday & Family Functions" href="#">Enquire on WhatsApp</a></div>
+          </div>
+          <div class="service-item">
+            <button class="service-question" aria-expanded="false"><span>Corporate & Office Events</span><span>+</span></button>
+            <div class="service-answer">Ask us about meal arrangements for office gatherings and team events.<br><a class="btn btn-maroon service-wa" data-service="Corporate & Office Events" href="#">Enquire on WhatsApp</a></div>
+          </div>
+          <div class="service-item">
+            <button class="service-question" aria-expanded="false"><span>Bulk Biryani Orders</span><span>+</span></button>
+            <div class="service-answer">Planning a large gathering? Contact us with your guest count and preferred menu.<br><a class="btn btn-maroon service-wa" data-service="Bulk Biryani Orders" href="#">Enquire on WhatsApp</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container bulk-banner">
+        <div><div class="eyebrow">Planning an event?</div><h2>Let's plan a delicious celebration.</h2><p>Tell us your event date, location and guest count. We'll help you with the menu and quotation.</p></div>
+        <a class="btn btn-gold" href="https://wa.me/919543613177?text=Hello%20HMS%20Catering%2C%20I%20need%20a%20catering%20quotation." target="_blank" rel="noopener">Get a Catering Quote</a>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">We'd love to hear from you</div>
+          <h2>Contact HMS Catering</h2>
+          <p>Call us or send your requirements on WhatsApp. We look forward to serving your occasion.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3 style="color:var(--maroon);font-size:25px;margin-bottom:10px;">Get in touch</h3>
+            <div class="contact-line"><b>Address</b><span>No. 46, Periyarpathai, B.E Colony Main Road,<br>Choolaimedu, Chennai – 600094</span></div>
+            <div class="contact-line"><b>Call us</b><span><a href="tel:+919543613177">95436 13177</a> · <a href="tel:+919025833231">90258 33231</a><br><a href="tel:+919884211636">98842 11636</a> · <a href="tel:+919788994543">97889 94543</a></span></div>
+            <div class="contact-line"><b>WhatsApp</b><span>Send your event details and guest count.</span></div>
+            <a class="btn btn-gold" style="margin-top:20px;" href="https://www.google.com/maps/search/?api=1&query=No.46+Periyarpathai+Choolaimedu+Chennai+600094" target="_blank" rel="noopener">View Location on Maps</a>
+          </div>
+          <form class="contact-form" id="enquiryForm">
+            <h3 style="color:var(--maroon);font-size:25px;">Send an enquiry</h3>
+            <label for="customerName">Your name</label><input id="customerName" name="name" placeholder="Enter your name" required />
+            <label for="eventType">Catering service</label>
+            <select id="eventType" name="service" required>
+              <option value="">Select a service</option>
+              <option>Wedding & Reception Catering</option><option>Birthday & Family Functions</option>
+              <option>Corporate & Office Events</option><option>Bulk Biryani Orders</option><option>Other enquiry</option>
+            </select>
+            <label for="guestCount">Approximate number of guests</label><input id="guestCount" name="guests" type="number" min="1" placeholder="e.g. 100" />
+            <label for="eventMessage">Your requirements</label><textarea id="eventMessage" name="message" placeholder="Event date, location and menu requirements..."></textarea>
+            <button class="btn btn-maroon" type="submit">Send via WhatsApp ↗</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> <strong>HMS Catering</strong>. All rights reserved. · Dum Cooked. Traditionally Yours.</footer>
+  <a class="whatsapp-float" href="https://wa.me/919543613177?text=Hello%20HMS%20Catering%2C%20I%20would%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener" aria-label="Chat with HMS Catering on WhatsApp">✆</a>
+
+  <script>
+    // Update this number if HMS Catering wants a different WhatsApp contact.
+    const WHATSAPP_NUMBER = "919543613177";
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    // Close the mobile menu after a navigation link is selected.
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => navLinks.classList.remove("open"));
+    });
+
+    // Expand/collapse catering service details.
+    document.querySelectorAll(".service-question").forEach(button => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".service-item");
+        const isOpen = item.classList.contains("active");
+        document.querySelectorAll(".service-item").forEach(service => {
+          service.classList.remove("active");
+          service.querySelector(".service-question").setAttribute("aria-expanded", "false");
+        });
+        if (!isOpen) {
+          item.classList.add("active");
+          button.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+
+    // Build a WhatsApp enquiry for the selected catering service.
+    document.querySelectorAll(".service-wa").forEach(link => {
+      const service = link.dataset.service;
+      const message = `Hello HMS Catering, I am interested in ${service}. Please share the menu and pricing.`;
+      link.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      link.target = "_blank";
+      link.rel = "noopener";
+    });
+
+    // Contact form does not store data; it opens WhatsApp with the enquiry text.
+    document.getElementById("enquiryForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const name = document.getElementById("customerName").value.trim();
+      const service = document.getElementById("eventType").value;
+      const guests = document.getElementById("guestCount").value.trim() || "Not specified";
+      const details = document.getElementById("eventMessage").value.trim() || "No additional details";
+      const message = `Hello HMS Catering!\nName: ${name}\nService: ${service}\nGuest count: ${guests}\nRequirements: ${details}\nPlease contact me with the details and quotation.`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
